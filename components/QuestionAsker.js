@@ -33,6 +33,9 @@ app.component('question-asker',
                     'content-type': 'application/json'
                 }
             })
+                .then(res => {
+                    return res.json();
+                })
                 .then(json => {
                     console.log(json);
                     this.questions.value = json;
