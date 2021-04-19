@@ -35,7 +35,7 @@ app.component('question-asker',
             })
                 .then(json => {
                     console.log(json);
-                    this.questions.value = json.data;
+                    this.questions.value = json;
                 })
         }
     },
