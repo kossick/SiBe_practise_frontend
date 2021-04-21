@@ -14,32 +14,17 @@ app.component('question-asker',
             questions: []
     }
 },
-    methods:{
-        /*async getQuestions() {
-            const response = await fetch("http://localhost:8080/pages/view", {
+    methods:{ 
+        async getQuestions() {
+            console.log('Does this work?')
+            const response = await fetch("http://localhost:8080/questions/view", {
                 method: 'get',
+                mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 }
             });
-            const data = await response.json();
-            console.log(typeof(data))
-            this.questions.value = data.parse
-        }  */  
-        async getQuestions() {
-            return fetch("http://localhost:8080/pages/view", {
-                method: 'get',
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-                .then(res => {
-                    return res.json();
-                })
-                .then(json => {
-                    console.log(json);
-                    this.questions.value = json;
-                })
+            this.questions = await response.json()
         }
     },
 })
