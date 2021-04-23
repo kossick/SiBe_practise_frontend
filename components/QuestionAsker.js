@@ -3,15 +3,25 @@ app.component('question-asker',
     template:
     /*html*/
     `
-    <h2>{{ questions }}</h2>
-    <p>Will anything print?</p>
+    <h1>{{ askedQuestion }}</h1>
+
+    <form>
+        <button>{{ optionOne }}</button>
+        <button>{{ optionTwo }}</button>
+    </form>
+
     `,
     mounted: function () {
         this.getQuestions()
     },
     data() {
         return{
-            questions: []
+            questions: [],
+            activeQuestion: '',
+            askedQuestion: '',
+            optionOne: '',
+            optionTwo: '',
+            answer: ''
     }
 },
     methods:{ 
@@ -25,6 +35,10 @@ app.component('question-asker',
                 }
             });
             this.questions = await response.json()
+            this.activeQuestion = this.questions[1]
+            this.askedQuestion = this.activeQuestion.question
+            this.optionOne = this.activeQuestion.option_1
+            this.optionTwo = this.activeQuestion.option_2
         }
     },
 })
