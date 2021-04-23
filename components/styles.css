@@ -1,0 +1,76 @@
+body{
+    background-color: rgb(36, 129, 198);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.question {
+    display: flex;
+    align-items: center;
+}
+
+div.question h1 {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -75%);
+    color: rgb(33, 37, 41);
+}
+
+div.question form {
+    position: absolute;
+    bottom: 45%;
+    left: 50%;
+    transform: translate(-50%, 75%);
+}
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    border: none;
+    padding: 15px 75px;
+    border-radius: 4px;
+    font-size: 10px;
+    transition-duration: 0.4s;
+}
+
+button.leftButton {
+    background-color: rgb(32, 201, 151);
+}
+
+button.leftButton:hover {
+    background-color: rgb(20, 150, 75);
+}
+
+button.rightButton {
+    margin-left: 100px;
+    background-color: rgb(220, 53, 69);
+}
+
+button.rightButton:hover {
+    background-color: rgb(175, 20, 20);
+}
+
+div.navBar {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 450px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+
+div.navBar a{
+    position: absolute;
+    width: 6em;
+    color: white;
+}
+
+div.navBar a.prevQ {
+    left: -15%;
+}
+
+div.navBar a.nextQ {
+    right: -15%;
+}
