@@ -30,7 +30,7 @@ button {
     padding: 15px 75px;
     border-radius: 4px;
     font-size: 10px;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
 }
 
 button.leftButton {
@@ -38,7 +38,7 @@ button.leftButton {
 }
 
 button.leftButton:hover {
-    background-color: rgb(20, 150, 75);
+    background-color: rgb(23, 152, 114);
 }
 
 button.rightButton {
@@ -47,12 +47,12 @@ button.rightButton {
 }
 
 button.rightButton:hover {
-    background-color: rgb(175, 20, 20);
+    background-color: rgb(189, 33, 48);
 }
 
 div.navBar {
     position: absolute;
-    bottom: 35%;
+    bottom: 25%;
     left: 50%;
     transform: translate(-50%, 0%);
     width: 450px;
@@ -61,18 +61,24 @@ div.navBar {
     font-size: 10px;
 }
 
-div.navBar a{
+div.navBar button.navButton {
     position: absolute;
-    width: 6em;
-    color: white;
+    padding: 10px 30px;
 }
 
-div.navBar a.prevQ {
+#prevQ {
     left: -15%;
+    background-color: tomato;
 }
 
-div.navBar a.nextQ {
+#nextQ {
     right: -15%;
+    background-color: teal;
+}
+
+.disabledButton {
+    background-color: rgb(65, 154, 220);
+    cursor: not-allowed;
 }
 
 p.info {

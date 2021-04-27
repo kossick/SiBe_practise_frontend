@@ -19,8 +19,20 @@ app.component('question-asker',
             </div>
         </div>
         <div class="navBar">
-            <a class="prevQ">&lt- Previous question</a>
-            <a class="nextQ">Next question -></a>
+            <button class="navButton" 
+            id="prevQ"
+            :class = "{ disabledButton: pageIndex===0 }"
+            :disabled="pageIndex===0"
+            @click="incrementIndex(-1)">
+                &lt- Previous question
+            </button>
+            <button class="navButton" 
+            id="nextQ"
+            :class = "{ disabledButton: pageIndex===questions.length - 1 }"
+            :disabled="pageIndex===questions.length - 1"
+            @click="incrementIndex()">
+                Next question ->
+            </button>
         </div>
     </div>
     <p class="info" v-if="this.answer">{{ '{Question: ' + askedQuestion + ', Answer: ' + answer + '}' }}</p>
@@ -41,7 +53,6 @@ app.component('question-asker',
 },
     methods:{ 
         async getQuestions() {
-            console.log('Does this work?');
             const response = await fetch("http://localhost:8080/questions/view", {
                 method: 'get',
                 mode: 'cors',
@@ -53,10 +64,11 @@ app.component('question-asker',
             this.updateInformation(this.pageIndex);
         },
         updateInformation(pageIndex) {
-            this.activeQuestion = this.questions[pageIndex]
-            this.askedQuestion = this.activeQuestion.question
-            this.optionOne = this.activeQuestion.option_1
-            this.optionTwo = this.activeQuestion.option_2
+            this.activeQuestion = this.questions[pageIndex];
+            this.askedQuestion = this.activeQuestion.question;
+            this.optionOne = this.activeQuestion.option_1;
+            this.optionTwo = this.activeQuestion.option_2;
+            this.answer = '';
         },
         updateAnswer(answer) {
             let response = {
@@ -65,8 +77,10 @@ app.component('question-asker',
             }
 
             this.answer = answer;
-
-            console.log(response);
+        },
+        incrementIndex(step=1) {
+            this.pageIndex += step;
+            this.updateInformation(this.pageIndex);
         }
     },
 })
