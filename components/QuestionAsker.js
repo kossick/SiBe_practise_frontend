@@ -71,12 +71,21 @@ app.component('question-asker',
             this.answer = '';
         },
         updateAnswer(answer) {
-            let response = {
-                question: this.askedQuestion,
-                answer: answer
-            }
-
             this.answer = answer;
+            this.submitAnswer();
+        },
+        async submitAnswer() {
+            const response = await fetch("http://localhost:8080/questions/submitanswer", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ 'question': this.pageIndex + 1, 'answer': this.answer })
+            });
+
+            data = await response.json();
+            console.log(data);
         },
         incrementIndex(step=1) {
             this.pageIndex += step;
