@@ -53,7 +53,7 @@ export default {
     },
     methods: { 
         async getQuestions() {
-            const response = await fetch("http://localhost:8080/questions/view", {
+            const response = await fetch("https://sibe-practise-backend.herokuapp.com/questions/view", {
                 method: 'get',
                 mode: 'cors',
                 headers: {
@@ -75,7 +75,7 @@ export default {
             this.submitAnswer();
         },
         async submitAnswer() {
-            const response = await fetch("http://localhost:8080/questions/submitanswer", {
+            const response = await fetch("https://sibe-practise-backend.herokuapp.com/questions/submitanswer", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
